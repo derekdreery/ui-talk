@@ -1,40 +1,338 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+        <title>Elements of UI</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/black.css">
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+        <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+<style>
+
+ul li {
+    margin: 0.6em;
+}
+
+:root {
+    --r-heading1-size: 2em;
+    --r-heading-text-transform: none;
+}
+.reveal > .slides > section {
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex {
+    flex: 1 1;
+}
+
+.center-vert {
+    margin: auto 0;
+}
+
+
+.img {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    margin: 12px;
+}
+
+.text-sm {
+    font-size: 22px;
+    margin: 4px 0 12px !important;
+}
+
+.bullet {
+    font-size: 0.5em;
+    position: relative;
+    top: 0.8em;
+    left: 1.2em;
+}
+
+.mono {
+    font-family: monospace;
+    background: #333;
+    padding: 0 4px;
+}
+
+</style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Elements of UI</h1>
+                    <p>A quick tour round the different things that go into making a user interface.</p>
+                </section>
+                <section>
+                    <h1>What is UI?</h1>
+                    <div class="flexbox flex">
+                        <div class="flexbox flex-col flex">
+                            <div class="flexbox flex-col flex">
+                                <div class="img flex" style="background-image: url(assets/desktop-ui.jpg)">&nbsp;</div>
+                                <p class="text-sm">Desktop</p>
+                            </div>
+                            <div class="flexbox flex-col flex">
+                                <div class="img flex" style="background-image: url(assets/phone-ui.jpg)">&nbsp;</div>
+                                <p class="text-sm">Smartphone</p>
+                            </div>
+                        </div>
+                        <div class="flexbox flex-col flex">
+                            <div class="flexbox flex-col flex">
+                                <div class="img flex" style="background-image: url(assets/embedded-ui.jpg)">&nbsp;</div>
+                                <p class="text-sm">Industrial controls</p>
+                            </div>
+                            <div class="flexbox flex-col flex">
+                                <div class="img flex" style="background-image: url(assets/non-visual-ui.jpg)">&nbsp;</div>
+                                <p class="text-sm">Accessible input/output</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-transition="slide-in fade-out">
+                    <h1>2 Main Types of UI</h1>
+                    <div class="flexbox flex">
+                        <div class="flexbox flex flex-col">
+                            <p>Where you are fitting into an existing interface</p>
+                            <div class="img flex" style="background-image: url(assets/word-interface.png)">&nbsp;</div>
+                        </div>
+                        <div class="flexbox flex flex-col">
+                            <p>Where you are providing everything yourself</p>
+                            <div class="img flex" style="background-image: url(assets/embedded-ui.jpg)">&nbsp;</div>
+                        </div>
+                    </div>
+                </section>
+                <section data-transition="fade">
+                    <h1>2 Main Types of UI</h1>
+                    <div class="flexbox flex">
+                        <div class="flexbox flex flex-col">
+                            <p>Where you are fitting into an existing interface</p>
+                            <ul class="flexbox flex-col flex">
+                                <li class="fragment semi-fade-out text-sm" data-fragment-index="1">
+                                    Many tasks are handled for you (e.g. menus, widgets, ...)
+                                </li>
+                                <li class="fragment fade-in-then-semi-out text-sm" data-fragment-index="1">
+                                    Your UI should look familiar or 'native'. If you don't users
+                                    will be confused and will not have a good experience
+                                </li>
+                                <li class="fragment fade-in-then-semi-out text-sm" data-fragment-index="2">
+                                    You generally will be distributing your platform widely. You
+                                    must therefore think about things like 
+                                    <a href="https://www.w3.org/International/questions/qa-i18n">
+                                        localization (l10n), internaltionalization (i18n)</a>
+                                    and 
+                                    <a href="https://www.w3.org/standards/webdesign/accessibility">
+                                        accessibility (a11y)
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flexbox flex flex-col">
+                            <p>Where you are providing everything yourself</p>
+                            <ul class="flexbox flex-col flex">
+                                <li class="fragment fade-in-then-semi-out text-sm" data-fragment-index="3">
+                                    You'll need to handle drawing everying and responding to raw
+                                    input data. There may be code libraries to help with this
+                                </li>
+                                <li class="fragment fade-in-then-semi-out text-sm" data-fragment-index="4">
+                                    You will generally have a much freer hand to design your
+                                    interface the way you want, and choosing what you elements you
+                                    want to use
+                                </li>
+                                <li class="fragment fade-in-then-semi-out text-sm" data-fragment-index="5">
+                                    Often you will be targeting a very specific set of users, and
+                                    you know exactly how they will interact with the UI, so you
+                                    don't need to cater to all different user needs.
+                                </li>
+                        </div>
+                    </div>
+                    <p class="fragment" data-fragment-index="6">Both have their challenges</p>
+                </section>
+                <section data-transition="fade-in">
+                    <h1>2 Main Types of UI</h1>
+                    <div class="flex">For the rest of the talk, I'm focusing on the 'fitting in' 
+                        case, but including web which is kinda its own thing.</p>
+                </section>
+                <section data-transition="fade-out">
+                    <h1>Drawing</h1>
+                    <p>What are we showing, where are we showing it.</p>
+                    <div class="flexbox flex-col flex text-sm">
+                        <div class="flexbox fragment flex">
+                            <div class="center-vert">Window or fullscreen:</div>
+                            <div class="img flex" style="background-image: url(assets/many-windows.jpg)">&nbsp;</div>
+                            <div class="center-vert">vs</div>
+                            <div class="img flex" style="background-image: url(assets/dropbox-android.png)">&nbsp;</div>
+                        </div>
+                        <div class="flexbox fragment flex">
+                            <div class="center-vert">What are we drawing:</div>
+                            <div class="img flex" style="background-image: url(assets/simple-triangle.gif)" alt="simple shapes">&nbsp;</div>
+                            <div class="center-vert">vs</div>
+                            <div class="img flex" style="background-image: url(assets/cupertino.jpg)" alt="full widgets">&nbsp;</div>
+                        </div>
+                    </div>
+                </section>
+                <section data-transition="fade">
+                    <h1>Drawing</h1>
+                    <div class="flex flex-col">
+                        <ul>
+                            <li> Most users will receive information from our app visually</li>
+                            <li>Retaining/caching output can be important for performance, but 
+                                easier for programmer to redraw everything every frame</li>
+                            <li>Frameworks like React try to give best of both worlds</li>
+                        </ul>
+                    </div>
+                </section>
+                <section data-transition="fade">
+                    <h1>Drawing</h1>
+                    <div class="flexbox"><pre><code class="language-jsx" data-trim
+                    data-line-numbers="2-5"><script type="text/template">
+const MaybeShow = ({shouldShow}) => {
+    if (shouldShow) {
+        return <div>Showing</div>;
+    } else {
+        return null;
+    }
+}
+                    </script></code></pre></div>
+                    <ul>
+                        <li>We don't need to expain how to add/remove stuff when 
+                            <code class="mono">shouldShow</code> changes, that bit is figured out for 
+                            us</li>
+                        <li>How to make UI easy for the programmer is a massive topic on its own</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Text</h1>
+                    <ul>
+                        <li>Text is hard</li>
+                        <li>Easy: <strong>Ow now brown cow</strong></li>
+                        <li>Easyish: <strong>mais Mémé aimait même, mes mets...</strong></li>
+                        <li>Hard: <strong>  
+यह देवनागरी है, और यह हिब्रू में नमस्ते है:
+שלום מימין לשמאל
+                            </strong>
+                        <li>(My text editor completely failed on the last one, but browsers tend to
+                            have really good support for alternate scripts)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Text encoding</h1>
+                    <ul>
+                        <li>Massive subject, but the upshot is everyone uses Unicode and UTF-8 
+                            (except Microsoft of course, who use a slightly wrong UTF-16)</li>
+                        <li>The thing to remember is "Unicode is the way of recording all text from
+                            any languages, and UTF-8 is how to actually store it on disk 
+                            efficiently"</li>
+                    </ul>
+                </section>
+                <section data-background-image="assets/kerning.jpg" data-background-opacity="0.2">
+                    <h1>Text shaping</h1>
+                    <p>This is turning a string of text into a sequence of glyphs and locations to
+                    draw them</p>
+                    <ul class="text-sm">
+                        <li>In English, there is almost always a 1-1 correspondence between
+                            characters and glyphs</li>
+                        <li>Not so in other languages</li>
+                        <li>Arabic (العربية) normally has 4 ways to draw each character, for start, middle,
+                            end of a word, and on its own</li>
+                        <li>Oh yeah, Hebrew and Arabic are written backwards. How does selecting
+                            text work when you have languages in both directions? People have
+                            actually solved this.</li>
+                        <li>kerning, emoji 😃, ...</li>
+                    </ul>
+                </section>
+                <section data-transition="fade" data-background-image="assets/kerning.jpg">
+                </section>
+                <section>
+                    <h1>Text drawing</h1>
+                    Glyphs must be turned from a list of curves into actual pixels at a given size
+                    to be drawn.
+                    <ul>
+                        <li>Antialiasing (including subpixel)</li>
+                        <li>Hinting</li>
+                        <li>4k screens mean we may be able to consign some techniques to the
+                            dustbin of history</li>
+                    </ul>
+                </section>
+                <section data-transition="fade" data-background-image="assets/antialiasing.png"
+                    data-background-size="contain">
+                </section>
+                <section data-transition="fade" data-background-image="assets/hinting.png"
+                    data-background-size="contain">
+                </section>
+                <section>
+                    <h1>Input handling</h1>
+                    <ul class="text-sm">
+                        <li>Traditionally, the main sources of input were mouse and keyboard. Now 
+                            we have many devices, including speech, touchscreen, accessible 
+                            devices, and more.</li>
+                        <li>Most input methods can be represented as either a stream of characters,
+                            or a pointer to parts of the screen. This greatly simplifies the job of
+                            application developers: they do not have to think about the great
+                            complexity here; it can be handled by UI libraries</li>
+                        <li>Again, scripts come to bite us again here: CJK languages (Chinese,
+                            Japanese and Korean) have far too many characters to have a keyboard
+                            key for each one</li>
+                        <li>They usually use Imput Method Editor (IME) software. All I will say
+                            here is that you should support it</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Accessibility</h1>
+                    <p class="text-sm">I've run out of time, but this should be its own talk anyway. There are many
+                    different disabilities, and many different technologies to enable full access
+                    to computing for people with any of them. A very quick list: color blindness
+                    and gradient selection, blindness, screen readers and tree-based interface 
+                    representation, motor problems and keyboard-only navigation (tab through input 
+                    elements).</p>
+                    <p class="text-sm">Accessibility is something that you <strong>cannot</strong> ignore as an 
+                    application developer, the same way you can ignore other stuff I've talked 
+                    about. High-contrast mode, easily understandable text, and much besides is in
+                    the domain of the application developer.</p>
+                </section>
+                <section>
+                    <h1>End</h1>
+                    <p>I hope this has been interesting. It's tricky for an application developer,
+                    because we can forget about this stuff most of the time, but not all the
+                    time.</p>
+                </section>
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+                display: 'flex',
+            });
+        </script>
+    </body>
 </html>
